@@ -1,0 +1,2 @@
+# Plugin
+SKSE Plugin helpers
