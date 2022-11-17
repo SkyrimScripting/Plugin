@@ -1,5 +1,7 @@
 #pragma once
 
+#define API_INTERFACE __declspec(dllexport)
+
 #include "RE/Skyrim.h"
 #include "SKSE/SKSE.h"
 
