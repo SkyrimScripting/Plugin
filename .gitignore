@@ -1,5 +1,5 @@
-build
 .idea
-cmake-build*
 .vs
-*.pdb
+.vscode/settings.json
+build
+cmake-build*

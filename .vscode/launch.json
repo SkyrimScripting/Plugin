@@ -1,12 +1,10 @@
 {
-    // created by vscode papyrus-lang papyrus.skyrimSpecialEdition.generateProject
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Skyrim SE",
-            "type": "papyrus",
+            "name": "C++ Debugger",
+            "type": "cppvsdbg",
             "request": "attach",
-            "game": "skyrimSpecialEdition"
         }
     ]
 }
