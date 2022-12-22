@@ -32,7 +32,7 @@ namespace SkyrimScripting::Plugin {
                 auto& plugin = GetSingleton();
                 switch (message->type) {
                     case SKSE::MessagingInterface::kDataLoaded:
-                        plugin.RunSystemEventCallbacks(SystemEvents::Forms_Loaded);
+                        plugin.RunSystemEventCallbacks(SystemEvents::Data_Loaded);
                         break;
                     default:
                         // Setup log please lol so we can log!

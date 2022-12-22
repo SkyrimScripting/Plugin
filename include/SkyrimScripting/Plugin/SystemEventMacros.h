@@ -28,21 +28,20 @@
     }};                                                                                                     \
     inline void __SKYRIM_SCRIPTING_PLUGIN_CALLBACKFN_NAME(count)
 
-#define OnSystemEvent(systemEvent)                                                                              \
-    __SKYRIM_SCRIPTING_PLUGIN_REGISTER_AND_DEFINE_CALLBACK(SkyrimScripting::Plugin::SystemEvents::Forms_Loaded, \
-                                                           __COUNTER__)                                         \
+#define OnSystemEvent(systemEvent)                                                                             \
+    __SKYRIM_SCRIPTING_PLUGIN_REGISTER_AND_DEFINE_CALLBACK(SkyrimScripting::Plugin::SystemEvents::Data_Loaded, \
+                                                           __COUNTER__)                                        \
     ()
 
-#define OnFormsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Forms_Loaded)
-
-// enum class SystemEvents {
-//     SKSE_Plugins_Loaded = 0,
-//     After_SKSE_Plugins_Loaded = 1,
-//     Loading_Game = 2,
-//     Load_Game = 3,
-//     Save_Game = 4,
-//     Delete_Game = 5,
-//     UI_Loaded = 6,
-//     New_Game = 7,
-//     Forms_Loaded = 8
-// };
+#define OnPluginLoad OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::SKSE_Plugins_Loaded)
+#define OnLoad OnPluginLoad
+#define OnPluginsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::After_SKSE_Plugins_Loaded)
+#define OnLoadingGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::Loading_Game)
+#define OnLoadedGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::Loaded_Game)
+#define OnSaveGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::Save_Game)
+#define OnDeleteGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::Delete_Game)
+#define OnNewGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::New_Game)
+#define OnInputLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded::Input_Loaded)
+#define OnUIReady OnInputLoaded
+#define OnDataLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded)
+#define OnFormsLoaded OnDataLoaded
