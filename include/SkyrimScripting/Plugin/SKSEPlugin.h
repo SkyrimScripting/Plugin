@@ -3,10 +3,13 @@
 #include <RE/Skyrim.h>
 
 #include <atomic>
+#include <filesystem>
 #include <functional>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
+#include "SkyrimScripting/Plugin/Logger.h"
 #include "SkyrimScripting/Plugin/SystemEvents.h"
 
 namespace SkyrimScripting::Plugin {
@@ -19,6 +22,7 @@ namespace SkyrimScripting::Plugin {
         SKSEPlugin& operator=(const SKSEPlugin&) = delete;
         SKSEPlugin& operator=(SKSEPlugin&&) = delete;
 
+        std::atomic<bool> _initialized;
         std::unordered_map<SystemEvents, std::vector<std::function<void()>>> _systemCallbacks;
 
     public:
@@ -27,10 +31,41 @@ namespace SkyrimScripting::Plugin {
             return singleton;
         }
 
+        // TODO Add support for a OnStartGame() event which is just TESCellFullyLoaded which is reset by the main menu
+        //      and reset by load game (maybe)
+
         static void __Initialize() {
+            auto& plugin = GetSingleton();
+            if (plugin._initialized.exchange(true)) return;
+            Logger::InitializeLog();
+            plugin.RunSystemEventCallbacks(SystemEvents::Plugin_Init);
             SKSE::GetMessagingInterface()->RegisterListener([](SKSE::MessagingInterface::Message* message) {
                 auto& plugin = GetSingleton();
                 switch (message->type) {
+                    case SKSE::MessagingInterface::kPostLoad:
+                        plugin.RunSystemEventCallbacks(SystemEvents::SKSE_Plugins_Loaded);
+                        break;
+                    case SKSE::MessagingInterface::kPostPostLoad:
+                        plugin.RunSystemEventCallbacks(SystemEvents::After_SKSE_Plugins_Loaded);
+                        break;
+                    case SKSE::MessagingInterface::kPreLoadGame:
+                        plugin.RunSystemEventCallbacks(SystemEvents::Loading_Game);
+                        break;
+                    case SKSE::MessagingInterface::kPostLoadGame:
+                        plugin.RunSystemEventCallbacks(SystemEvents::Loaded_Game);
+                        break;
+                    case SKSE::MessagingInterface::kSaveGame:
+                        plugin.RunSystemEventCallbacks(SystemEvents::Save_Game);
+                        break;
+                    case SKSE::MessagingInterface::kDeleteGame:
+                        plugin.RunSystemEventCallbacks(SystemEvents::Delete_Game);
+                        break;
+                    case SKSE::MessagingInterface::kInputLoaded:
+                        plugin.RunSystemEventCallbacks(SystemEvents::Input_Loaded);
+                        break;
+                    case SKSE::MessagingInterface::kNewGame:
+                        plugin.RunSystemEventCallbacks(SystemEvents::New_Game);
+                        break;
                     case SKSE::MessagingInterface::kDataLoaded:
                         plugin.RunSystemEventCallbacks(SystemEvents::Data_Loaded);
                         break;
