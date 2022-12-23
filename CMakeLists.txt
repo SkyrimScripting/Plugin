@@ -45,4 +45,4 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
 )
 
-# add_subdirectory(Examples)
+add_subdirectory(Examples)

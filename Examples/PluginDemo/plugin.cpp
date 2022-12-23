@@ -20,8 +20,7 @@ OnInit { logger::info("INIT FROM THE MACRO!"); }
 SKSEPluginLoad(const SKSE::LoadInterface* skse) {
     SKSE::Init(skse);
     SkyrimScripting::Plugin::Initialize();
-    On<RE::TESInitScriptEvent>([](const RE::TESInitScriptEvent* event) {
-        logger::info("Init script for {}", event->objectInitialized->GetBaseObject()->GetName());
-    });
     return true;
 }
+
+OnInputLoaded { ConsoleLog("Hello! {} {} {}", 1, 2, 3); }

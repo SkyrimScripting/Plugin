@@ -36,6 +36,5 @@
 #define OnDeleteGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Delete_Game)
 #define OnNewGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::New_Game)
 #define OnInputLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Input_Loaded)
-#define OnUIReady OnInputLoaded
 #define OnDataLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Data_Loaded)
 #define OnFormsLoaded OnDataLoaded
