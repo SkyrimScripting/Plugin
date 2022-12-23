@@ -75,7 +75,25 @@ ConsoleLog(
 
 ## SKSE Events (`OnInit { ... }`)
 
-To make it easier to specify code that should run on certain SKSE event, the following callback macros are available:
+Specify code that should run on certain SKSE event:
+
+```cpp
+#include <SkyrimScripting/Plugin.h>
+
+OnInit {
+    logger::info("I run immediately, as soon as the plugin is loaded");
+}
+
+OnDataLoaded {
+    logger::info("Data loaded! Now I have access to all of the forms in the game");
+}
+
+OnNewGame {
+    logger::info("Oh, hey! A new game was created!");
+}
+```
+
+The following callback macros are available:
 
 | | Timing | SKSE Event |
 |-|-|-|
