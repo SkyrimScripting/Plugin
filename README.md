@@ -2,6 +2,16 @@
 
 ![SKSE Plugin](Images/Plugin_Logo.png)
 
+- [SKSE Plugin helpers](#skse-plugin-helpers)
+- [`#include <SkyrimScripting/Plugin.h>`](#include-skyrimscriptingpluginh)
+  - [`logger`](#logger)
+    - [Customizing Log File Path](#customizing-log-file-path)
+  - [`ConsoleLog`](#consolelog)
+  - [SKSE Events (`OnInit { ... }`)](#skse-events-oninit---)
+    - [Providing your own `SKSEPluginLoad`](#providing-your-own-sksepluginload)
+  - [Game Events (`On<EventType>`)](#game-events-oneventtype)
+
+
 # `#include <SkyrimScripting/Plugin.h>`
 
 To get started, use the [Starter Kit](https://github.com/SkyrimScripting/SKSE_Template_StarterKit).
