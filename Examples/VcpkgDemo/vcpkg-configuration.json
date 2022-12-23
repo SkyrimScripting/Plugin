@@ -15,10 +15,17 @@
     },
     {
       "kind": "git",
-      "repository": "file://c:/Code/SkyrimScripting/vcpkg_Examples",
-      "baseline": "69723d08c347e39d423bebedd555496bfffe575f",
+      "repository": "https://github.com/SkyrimScripting/vcpkg.git",
+      "baseline": "f1f03d792aaccccd2df1334e4b09955f667f7214",
       "packages": [
-        "skyrimscripting-cmake",
+        "skyrimscripting-cmake"
+      ]
+    },
+    {
+      "kind": "git",
+      "repository": "file://c:/Code/SkyrimScripting/vcpkg_Examples",
+      "baseline": "9c1a1b2a6bdefa87f12269b5084607bd6221d86e",
+      "packages": [
         "skyrimscripting-plugin"
       ]
     }
