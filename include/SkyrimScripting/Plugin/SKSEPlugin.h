@@ -34,7 +34,7 @@ namespace SkyrimScripting::Plugin {
         // TODO Add support for a OnStartGame() event which is just TESCellFullyLoaded which is reset by the main menu
         //      and reset by load game (maybe)
 
-        static void __Initialize() {
+        static void Initialize() {
             auto& plugin = GetSingleton();
             if (plugin._initialized.exchange(true)) return;
             Logger::InitializeLog();
@@ -70,7 +70,7 @@ namespace SkyrimScripting::Plugin {
                         plugin.RunSystemEventCallbacks(SystemEvents::Data_Loaded);
                         break;
                     default:
-                        // Setup log please lol so we can log!
+                        SKSE::log::info("Unexpected SKSE message type {}", message->type);
                         break;
                 }
             });

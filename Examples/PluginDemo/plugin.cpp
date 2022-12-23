@@ -1,8 +1,14 @@
 #include <SkyrimScripting/Plugin.h>
 
-OnInit { logger::trace("Immediately init logged!"); }
-OnLoad { logger::trace("Hello from plugin!"); }
-OnPluginsLoaded { logger::trace("Plugins loaded!"); }
-OnDataLoaded { logger::trace("Data loaded!"); }
-OnSaveGame { logger::trace("Save game!"); }
-OnLoadedGame { logger::trace("Loaded game!"); }
+OnInit {
+    On<RE::TESActivateEvent>([](const RE::TESActivateEvent* activation) {
+        auto activator = activation ? activation->actionRef->GetBaseObject()->GetName() : "";
+        auto activated = activation->objectActivated ? activation->objectActivated->GetBaseObject()->GetName() : "";
+        logger::info("{} activated {}", activator, activated);
+    });
+
+    On<RE::TESContainerChangedEvent>([](const RE::TESContainerChangedEvent* event) {
+        logger::info("{} {:x} transferred from {:x} to {:x}", event->itemCount, event->baseObj, event->oldContainer,
+                     event->newContainer);
+    });
+}

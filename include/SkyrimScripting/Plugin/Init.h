@@ -8,7 +8,7 @@ namespace SkyrimScripting::Plugin {
     // Initialize the plugin
     SKSEPluginLoad(const SKSE::LoadInterface *skse) {
         SKSE::Init(skse);
-        SKSEPlugin::__Initialize();
+        SKSEPlugin::Initialize();
         return true;
     }
 }
