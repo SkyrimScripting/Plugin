@@ -14,4 +14,35 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
-add_subdirectory(Examples)
+include(GNUInstallDirs)
+
+install(DIRECTORY include DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/..")
+
+install(
+    TARGETS ${PROJECT_NAME}
+    EXPORT ${PROJECT_NAME}-targets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} # static and import libs?
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # .so?
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # .dll
+)
+
+install(
+    EXPORT ${PROJECT_NAME}-targets
+    FILE ${PROJECT_NAME}-targets.cmake
+    NAMESPACE "SkyrimScriptingPlugin::"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+)
+
+configure_file(
+    cmake/Config.cmake.in
+    ${PROJECT_NAME}Config.cmake
+    @ONLY
+)
+
+install(
+    FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake"
+)
+
+# add_subdirectory(Examples)
