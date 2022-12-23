@@ -26,6 +26,7 @@
     ()
 
 #define OnInit OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Plugin_Init)
+#define EventHandlers OnInit
 #define OnPluginLoad OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::SKSE_Plugins_Loaded)
 #define OnLoad OnPluginLoad
 #define OnPluginsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::After_SKSE_Plugins_Loaded)

@@ -1,6 +1,6 @@
 #include <SkyrimScripting/Plugin.h>
 
-OnInit {
+EventHandlers {
     On<RE::TESActivateEvent>([](const RE::TESActivateEvent* activation) {
         auto activator = activation ? activation->actionRef->GetBaseObject()->GetName() : "";
         auto activated = activation->objectActivated ? activation->objectActivated->GetBaseObject()->GetName() : "";
