@@ -151,8 +151,8 @@ If you want to find out whenever one of these events happens in the game:
 
 EventHandlers {
     On<RE::TESActivateEvent>([](const RE::TESActivateEvent* event) {
-        auto activator = event->actionRef ? event->actionRef->GetBaseObject()->GetName() : "";
-        auto activated = event->objectActivated ? event->objectActivated->GetBaseObject()->GetName() : "";
+        auto activator = event->actionRef->GetBaseObject()->GetName();
+        auto activated = event->objectActivated->GetBaseObject()->GetName();
         logger::info("{} activated {}", activator, activated);
     });
 
