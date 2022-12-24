@@ -145,7 +145,7 @@ This will:
 - Run the `OnInit` handlers
 
 > **⚠️ Note:** _Calling `Plugin::Initialize()` will register a SKSE message listener._  
-> _You will no be able to `*`also`*` `SKSE::GetMessagingInterface()->RegisterListener()`._
+> _You will no be able to \*also\* `SKSE::GetMessagingInterface()->RegisterListener()`._
 
 ## Game Events (`On<EventType>`)
 
