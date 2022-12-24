@@ -144,7 +144,8 @@ This will:
 - Initialize the log
 - Run the `OnInit` handlers
 
-> **⚠️ Note:** _Calling `Plugin::Initialize()` will register a message listener. You will no be able to ALSO `RegisterListener`._
+> **⚠️ Note:** _Calling `Plugin::Initialize()` will register a message listener._  
+> _You will no be able to ALSO `RegisterListener`._
 
 ## Game Events (`On<EventType>`)
 
