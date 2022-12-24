@@ -8,6 +8,7 @@
     - [Customizing Log File Path](#customizing-log-file-path)
   - [`ConsoleLog`](#consolelog)
   - [SKSE Events (`OnInit { ... }`)](#skse-events-oninit---)
+    - [Event Types](#event-types)
     - [Providing your own `SKSEPluginLoad`](#providing-your-own-sksepluginload)
   - [Game Events (`On<EventType>`)](#game-events-oneventtype)
 
@@ -102,6 +103,8 @@ OnNewGame {
     logger::info("Oh, hey! A new game was created!");
 }
 ```
+
+### Event Types
 
 The following callback macros are available:
 
