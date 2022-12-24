@@ -150,6 +150,7 @@ If you want to find out whenever one of these events happens in the game:
 #include <SkyrimScripting/Plugin.h>
 
 EventHandlers {
+
     On<RE::TESActivateEvent>([](const RE::TESActivateEvent* event) {
         auto activator = event->actionRef->GetBaseObject()->GetName();
         auto activated = event->objectActivated->GetBaseObject()->GetName();
