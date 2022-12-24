@@ -128,10 +128,14 @@ If you really want to provide your own `SKSEPluginLoad`, just make sure to call 
 ```cpp
 SKSEPluginLoad(const SKSE::LoadInterface *skse) {
     SKSE::Init(skse);
+    
     // Your code
+    
     // Note: this is where OnInit { ... } code runs
     SkyrimScripting::Plugin::Initialize();
+    
     // Your code
+    
     return true;
 }
 ```
@@ -139,6 +143,8 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
 This will:
 - Initialize the log
 - Run the `OnInit` handlers
+
+> **⚠️ Note:** _Calling `Plugin::Initialize()` will register a message listener. You will no be able to ALSO `RegisterListener`._
 
 ## Game Events (`On<EventType>`)
 
