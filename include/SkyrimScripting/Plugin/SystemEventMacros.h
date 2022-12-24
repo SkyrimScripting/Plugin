@@ -25,11 +25,17 @@
     __SKYRIM_SCRIPTING_PLUGIN_REGISTER_AND_DEFINE_CALLBACK(systemEvent, __COUNTER__) \
     ()
 
-#define OnInit OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Plugin_Init)
-#define EventHandlers OnInit
-#define OnPluginLoad OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::SKSE_Plugins_Loaded)
-#define OnLoad OnPluginLoad
-#define OnPluginsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::After_SKSE_Plugins_Loaded)
+// SKSEPluginLoad macro(s)
+// OnPluginLoad() because it's SKSEPluginLoad()
+#define OnPluginLoad OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Plugin_Init)
+// OnInit() to be like Papyrus
+#define OnInit OnPluginLoad
+// Semantics for registering event handlers
+#define EventHandlers OnPluginLoad
+
+// Other Macros
+#define OnPluginsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::SKSE_Plugins_Loaded)
+#define AfterPluginsLoaded OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::After_SKSE_Plugins_Loaded)
 #define OnLoadingGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Loading_Game)
 #define OnLoadedGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Loaded_Game)
 #define OnSaveGame OnSystemEvent(SkyrimScripting::Plugin::SystemEvents::Save_Game)

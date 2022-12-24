@@ -110,9 +110,9 @@ The following callback macros are available:
 
 | | Timing | SKSE Event |
 |-|-|-|
-| `OnInit` | Runs immediately, as soon as the SKSE plugin is loaded. | n/a |
-| `OnLoad`<br />`OnPluginLoad` | Runs as soon as all SKSE plugins have been loaded.<br />It can be preferable to run code here, as any code run in `OnInit` may run before other SKSE plugins have loaded. | `kPostLoad` |
-| `OnPluginsLoaded` | Runs immediately after `OnLoad`. Infrequently used, but can be useful for coordinating messaging with other plugins. | `kPostPostLoad` |
+| `OnPluginLoad`<br />`OnInit` | Runs immediately, as soon as the SKSE plugin is loaded. | n/a |
+| `OnPluginsLoaded` | Runs as soon as all SKSE plugins have been loaded.<br />It can be preferable to run code here, as any code run in `OnInit` may run before other SKSE plugins have loaded. | `kPostLoad` |
+| `AfterPluginsLoaded` | Runs immediately after `OnPluginsLoaded`. Infrequently used, but can be useful for coordinating messaging with other plugins. | `kPostPostLoad` |
 | `OnLoadingGame` | Runs _before_ the savegame is loaded by Skyrim.<br />`TODO: provide a way to get the size/path of the .ess save game` | `kPreLoadGame` |
 | `OnLoadedGame` | Runs _after_ the savegame has been loaded by Skyrim.<br />`TODO: provide a way to get whether load was successful` | `kPostLoadGame` |
 | `OnSaveGame` | Runs when saving a game | `kSaveGame` |
