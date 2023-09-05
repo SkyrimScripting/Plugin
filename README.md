@@ -1,5 +1,7 @@
 # SKSE Plugin helpers
 
+> `v2` WIP - this is a work in progress. All of the below might change...
+
 ![SKSE Plugin](Images/Plugin_Logo.png)
 
 - [SKSE Plugin helpers](#skse-plugin-helpers)
@@ -108,18 +110,18 @@ OnNewGame {
 
 The following callback macros are available:
 
-| | Timing | SKSE Event |
-|-|-|-|
-| `OnPluginLoad`<br />`OnInit` | Runs immediately, as soon as the SKSE plugin is loaded. | n/a |
-| `OnPluginsLoaded` | Runs as soon as all SKSE plugins have been loaded.<br />It can be preferable to run code here, as any code run in `OnInit` may run before other SKSE plugins have loaded. | `kPostLoad` |
-| `AfterPluginsLoaded` | Runs immediately after `OnPluginsLoaded`. Infrequently used, but can be useful for coordinating messaging with other plugins. | `kPostPostLoad` |
-| `OnLoadingGame` | Runs _before_ the savegame is loaded by Skyrim.<br />`TODO: provide a way to get the size/path of the .ess save game` | `kPreLoadGame` |
-| `OnLoadedGame` | Runs _after_ the savegame has been loaded by Skyrim.<br />`TODO: provide a way to get whether load was successful` | `kPostLoadGame` |
-| `OnSaveGame` | Runs when saving a game | `kSaveGame` |
-| `OnDeleteGame` | Runs when deleting a game | `kDeleteGame` |
-| `OnNewGame` | Runs after a new game has been created, but before the game has loaded | `kNewGame` |
-| `OnInputLoaded` | Runs after the game's input initializes, right before the Main Menu initializes | `kInputLoaded` |
-| `OnDataLoaded`<br />`OnFormsLoaded` | Runs after all of the game mods have been loaded (all Forms are loaded) | `kDataLoaded` |
+|                                     | Timing                                                                                                                                                                    | SKSE Event      |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| `OnPluginLoad`<br />`OnInit`        | Runs immediately, as soon as the SKSE plugin is loaded.                                                                                                                   | n/a             |
+| `OnPluginsLoaded`                   | Runs as soon as all SKSE plugins have been loaded.<br />It can be preferable to run code here, as any code run in `OnInit` may run before other SKSE plugins have loaded. | `kPostLoad`     |
+| `AfterPluginsLoaded`                | Runs immediately after `OnPluginsLoaded`. Infrequently used, but can be useful for coordinating messaging with other plugins.                                             | `kPostPostLoad` |
+| `OnLoadingGame`                     | Runs _before_ the savegame is loaded by Skyrim.<br />`TODO: provide a way to get the size/path of the .ess save game`                                                     | `kPreLoadGame`  |
+| `OnLoadedGame`                      | Runs _after_ the savegame has been loaded by Skyrim.<br />`TODO: provide a way to get whether load was successful`                                                        | `kPostLoadGame` |
+| `OnSaveGame`                        | Runs when saving a game                                                                                                                                                   | `kSaveGame`     |
+| `OnDeleteGame`                      | Runs when deleting a game                                                                                                                                                 | `kDeleteGame`   |
+| `OnNewGame`                         | Runs after a new game has been created, but before the game has loaded                                                                                                    | `kNewGame`      |
+| `OnInputLoaded`                     | Runs after the game's input initializes, right before the Main Menu initializes                                                                                           | `kInputLoaded`  |
+| `OnDataLoaded`<br />`OnFormsLoaded` | Runs after all of the game mods have been loaded (all Forms are loaded)                                                                                                   | `kDataLoaded`   |
 
 ### Providing your own `SKSEPluginLoad`
 
