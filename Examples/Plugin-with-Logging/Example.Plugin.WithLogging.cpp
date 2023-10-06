@@ -1,10 +1,5 @@
 #include <SkyrimScripting/Plugin.h>
 
-_OnSKSEMessage_(::SKSE::MessagingInterface::Message* message) {
-    _Log_("Hello from _OnSKSEMessage_");
-    _Log_("Message: {}", message->type);
-}
-
 _OnInit_ {
     SKSE::log::info("This is an SKSE log message (using SKSE::log) {}", 420);
 
@@ -15,6 +10,7 @@ _OnInit_ {
 _OnPluginsLoaded_ { _Log_("Hello from _OnPluginsLoaded_"); }
 _OnAfterPluginsLoaded_ { _Log_("Hello from _OnAfterPluginsLoaded_"); }
 _OnInputLoaded_ { _Log_("Hello from _OnInputLoaded_"); }
+
 _OnDataLoaded_ { _Log_("Hello from _OnDataLoaded_"); }
 
 _OnNewGame_(RE::TESQuest* quest) {
